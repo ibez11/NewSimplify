@@ -1,0 +1,116 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="padding-left" style="width: 30px; line-height: 15px;line-height: 18px;vertical-align: top;" width="50%">
+        <p>
+          <span class="thinner">{{entityName}}</span><br />
+          <span class="break-line ">{{entityAddress}}</span> <br />
+          <span>Phone: {{entityPhone}}</span> <br />
+          <span>Email : {{entityEmail}}</span> <br />
+          UEN : {{ uenNumber }} <br />
+          {{#if registerNumberGST}} GST Reg. No. : {{registerNumberGST}} {{else}}{{/if}}
+        </p>
+      </td>
+      <td class="text-align-left" style="vertical-align: top; padding-top: 10px; padding-left: 10px;" width="50%">
+        <table>
+          <tbody style="line-height: 18px; white-space: nowrap;">
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Quotation ID</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">#{{serviceNumber}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Issue Date</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{issueDate}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Expiry Date</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{expiryDate}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Term</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{contractTerm}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Sales Person</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{salesPerson}}</p>
+              </td>
+            </tr>
+            <tr style="vertical-align: baseline;">
+              <td style="width: 100px;">
+                <p class="thinner normal">Client Name</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px; word-break: break-all; white-space: normal;">
+                <p class="normal" style="margin: 0; padding: 0">{{clientName}}</p>
+              </td>
+            </tr>
+            {{#each customFields}}
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">{{label}}</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px; word-break: break-all; white-space: normal;">
+                <p class="normal">{{value}}</p>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #53a0be"></p>
+      </td>
+    </tr>
+    <tr>
+      <td class="padding-left" style="vertical-align: top;">
+        <p class="font-weight-600">Billing Address</p>
+        <p class="normal font-weight-600">{{clientName}}</p>
+        <p class="normal">{{billingAddress}}</p>
+      </td>
+      <td class="text-align-left" style="vertical-align: top;">
+        <p class="font-weight-600">Service Address</p>
+        <p class="normal">{{serviceAddress}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td class="padding-left" style="line-height: 1.6;">
+        <p class="font-weight-600">Quotation Title & Description</p>
+        <p class="text-bold">{{serviceTitle}}</p>
+        <p class="normal">{{{description}}}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+<br />

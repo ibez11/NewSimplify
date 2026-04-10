@@ -1,0 +1,96 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="padding-left" style="width: 30px; line-height: 15px;line-height: 18px;" width="50%">
+        <p>
+          <span class="thinner">{{entityName}}</span><br />
+          <span class="break-line ">{{entityAddress}}</span> <br />
+          <span>Phone: {{entityContactNumber}}</span> <br />
+          <span>Email : {{entityEmail}}</span> <br />
+          UEN : {{ uenNumber }} <br />
+          {{#if registerNumberGST}} GST Reg. No. : {{registerNumberGST}} {{else}}{{/if}}
+        </p>
+      </td>
+      <td class="text-align-left" style="vertical-align: top; padding-top: 10px; padding-left: 10px;" width="50%">
+        <table>
+          <tbody style="line-height: 18px; white-space: nowrap;">
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Invoice No</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{invoiceNo}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Invoice Date</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{createdDate}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Invoice Terms</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{dueDate}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Sales Person</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{salesPerson}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Attention to</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{attnTo}}</p>
+              </td>
+            </tr>
+            {{#each customFields}}
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">{{label}}</p>
+              </td>
+              <td class="text-align-left" style="padding-left: 20px;">
+                <p class="normal">{{value}}</p>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p class="border-bottom-secondary"></p>
+      </td>
+    </tr>
+    <tr>
+      <td class="value-width padding-left" style="line-height: 15px; vertical-align: top;">
+        <p class="thinner normal">Bill To</p>
+        <p class="thinner normal">{{clientName}}</p>
+        <p class="normal">{{billingAddress}}</p>
+      </td>
+      <td class="value-width text-align-left" style="padding-left: 10px;line-height: 15px; vertical-align: top;">
+        <p class="thinner normal">Service Address</p>
+        <p class="normal">{{serviceAddress}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="padding-left" colspan="2">
+        <br />
+        <p class="thinner normal">Quotation Reference</p>
+        <p class="normal">{{contractNo}}</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br /><br />

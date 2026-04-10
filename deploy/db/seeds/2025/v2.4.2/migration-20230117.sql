@@ -1,0 +1,17 @@
+--
+-- Added field WhatsAppReminder on Client
+--
+
+DO $$DECLARE r record;
+BEGIN
+    FOR r IN SELECT LOWER(key) as name FROM "shared"."Tenant"
+    LOOP
+        IF (SELECT EXISTS(SELECT 1 FROM information_schema.schemata WHERE schema_name = r.name)) THEN
+            EXECUTE 
+			'ALTER TABLE '|| r.name ||'."Client" 
+                ADD COLUMN "whatsAppReminder" bool NOT NULL DEFAULT true;
+            ALTER TABLE '|| r.name ||'."Client" 
+                ADD COLUMN "emailJobReport" bool NOT NULL DEFAULT true;';
+        END IF;
+    END LOOP;
+END$$;

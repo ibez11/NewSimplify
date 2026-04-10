@@ -1,0 +1,5 @@
+src/emails/**/*.pug
+src/reports/**/*.pug
+src/reports/**/*.html
+src/images/**/*.png
+src/constants/firebase-account.json

@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <style>
+         html {
+            font: 9px/1 'Open Sans', sans-serif;
+            overflow: auto;
+            padding: 0.1in;
+         }
+         .divContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between !important;
+            flex: none;
+            flex: 1 100%;
+            align-self: center;
+            padding: 0px 1.5em;
+            margin: 0;
+         }
+         .headTitle {
+            border: #000 1px;
+            background-color: #353c42;
+            sans-serif;
+            text-align: left;
+            color: #FFF;
+            height: 35px;
+         }
+         table { page-break-inside:auto }
+         tr {
+            border-color: inherit;
+         }
+         td, th {
+            padding: 2px;
+            padding-right: 10px;
+            padding-left: 10px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            page-break-inside:avoid; page-break-after:auto;
+         }
+         .removeBorderBottom {
+            font-size: 9px;
+            border-bottom: 0px;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+         }
+         p.thicker {
+            font-weight: 400;
+         }
+         p.description {
+            color: grey;
+            font-size: 10px;
+            word-break: break-all;
+            white-space: pre-line;
+         }
+         p.notes {
+            max-width: 400px;
+            word-wrap: break-word;
+         }
+         p.equipment {
+            color: grey;
+            font-size: 8px;
+            margin-bottom: 0px;
+         }
+         .MuiTable-root {
+            width: 100%;
+            display: table;
+            border-spacing: 0;
+            border-collapse: collapse;
+            page-break-inside:auto;
+         }
+         .MuiTableHead-root {
+            display: table-header-group;
+         }
+         .MuiTableBody-root {
+            display: table-row-group;
+         }
+         .MuiTableCell-root {
+            display: table-cell;
+            padding: 16px;
+            font-size: 10px;
+            text-align: left;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 9px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            letter-spacing: 0.01071em;
+            vertical-align: inherit;
+         }
+         .MuiTableCell-root-right {
+            display: table-cell;
+            padding: 16px;
+            font-size: 10px;
+            text-align: right;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 9px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            letter-spacing: 0.01071em;
+            vertical-align: inherit;
+         }
+         .totalBackgroundColor {
+            background-color: #cbcbcb;
+         }
+         .infoDetails {
+            font-weight: bold;
+         }
+         .img {
+            width: 100px;
+            height: 100px;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="divContainer">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom">
+                            <img src={{logoUrl}} style="width: 50%;"/>
+                        </td>
+                        <td style="width: 100%;" class="removeBorderBottom">
+                            <p class="thicker" style="font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;">{{entityName}} <br/>
+                            {{entityAddress}} <br/> Phone : {{entityContactNumber}} <br/> Email : {{entityEmail}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 100%; padding-top: 15px;" colspan="4"><p style="border-bottom-style: solid;border-width: thin;border-color: #53A0BE"></p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div class="divContainer">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Job ID</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: #{{id}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Client Name</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{clientName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Service Address</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{serviceAddress}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Contant Person</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{contactPerson}} ({{contactNumber}})</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Job Date & Time</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{startTime}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Technician</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{driverName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Vehicle Number</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{vehicleNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom infoDetails">Job Status</td>
+                        <td style="width: 70%;" class="removeBorderBottom">: {{jobStatus}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15%;" class="removeBorderBottom infoDetails" valign="top">Client Signature</td>
+                        <td style="width: 80%; padding: 0; margin: 0;" class="removeBorderBottom"><img src="{{clientSignature}}" style="width: 100px; padding: 0; margin: 0;"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <h4>Service Items</h4>
+            <table class="MuiTable-root">
+                <thead class="MuiTableHead-root">
+                <tr class="headTitle">
+                    <th class="MuiTableCell-root">Service Name</th>
+                    <th class="MuiTableCell-root">Qty</th>
+                </tr>
+                </thead>
+                <tbody class="MuiTableBody-root">
+                {{#each dataTables}}
+                <tr>
+                    <td class="MuiTableCell-root">
+                        <p>{{name}}</p>
+                        <p class="description">{{description}}</p>
+                    </td>
+                    <td class="MuiTableCell-root">
+                        <p>{{quantity}}</p>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <h4>{{additionalLabel}}</h4>
+            <table class="MuiTable-root">
+                <thead class="MuiTableHead-root">
+                <tr class="headTitle">
+                {{#each additionalTableHeader}}
+                    <th class="MuiTableCell-root">{{label1}}</th>
+                    <th class="MuiTableCell-root">{{label2}}</th>
+                {{/each}}
+                </tr>
+                </thead>
+                <tbody class="MuiTableBody-root">
+                {{#each dataAdditionalServiceItems}}
+                <tr>
+                    <td class="MuiTableCell-root">
+                        <p>{{name}}</p>
+                        <p class="description">{{description}}</p>
+                    </td>
+                    <td class="MuiTableCell-root">
+                        <p>{{quantity}}</p>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <h4>{{generalNoteLabel}}</h4>
+            <table>
+                <tbody>
+                {{#each generalNotes}}
+                <tr>
+                    <td style="width: 100px; vertical-align: top; padding-top: 10px; border-bottom: 1px solid rgba(224, 224, 224, 1);" class="removeBorderBottom">
+                         <img src={{imageUrl}} class="img"/>
+                    </td>
+                    <td style="width: 400px; vertical-align:middle; padding-top: 10px; border-bottom: 1px solid rgba(224, 224, 224, 1);" class="removeBorderBottom">
+                        <p class="notes">{{notes}}</p>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+      </div>
+      <br />
+      <div class="divContainer">
+            <h4>{{equipmentNoteLabel}}</h4>
+            <table>
+                <tbody>
+                {{#each equipmentNotes}}
+                <tr>
+                    <td style="width: 100px; vertical-align: top; padding-top: 10px; border-bottom: 1px solid rgba(224, 224, 224, 1);" class="removeBorderBottom">
+                         <img src={{imageUrl}} class="img"/>
+                    </td>
+                    <td style="width: 400px; vertical-align:middle; padding-top: 10px; border-bottom: 1px solid rgba(224, 224, 224, 1);" class="removeBorderBottom">
+                        <p class="notes"><b>Techinican : {{UserProfile.displayName}}</b></p>
+                        <p class="equipment">Equipment : {{Equipment.brand}} {{Equipment.model}} - {{Equipment.serialNumber}}</p>
+                        <p class="equipment">Location : {{Equipment.location}}</p>
+                        <p class="notes">{{notes}}</p>
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+      </div>
+    </body>
+</html>

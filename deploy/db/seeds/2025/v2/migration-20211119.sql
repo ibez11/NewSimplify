@@ -1,0 +1,2 @@
+-- add operation hours to company settings
+INSERT INTO "gcool"."Setting" VALUES (12, 'OperationHours', 'COMPANY_SETTING', '08:00:00, 21:00:00', 't', '2021-11-19 08:19:41.052+00', '2021-11-19 08:19:41.052+00');

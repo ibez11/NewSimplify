@@ -1,0 +1,18 @@
+<div class="page-break"></div>
+  <div class="content">
+    <table>
+      <tbody>
+        <tr>
+          <td class="padding-left special-font" style=" width: 30%;line-height: normal;">
+            {{{invoiceFooter}}}
+          </td>
+          {{#if qrImage }}
+          <td class="align-right" style="width: 20%; padding-right: 20px; vertical-align: top;">
+            <p class="normal text-align-right text-bold">QR Payment</p>
+            <img src="{{qrImage}}" style="width: 40%; margin-top: 10px;" />
+          </td>
+          {{else}}{{/if}}
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,90 @@
+<table>
+  <tbody>
+    <tr style="vertical-align: top;">
+      <td class="value-width-25 padding-left">
+        <p class="normal">Quotation ID</p>
+        <p class="normal font-weight-600">#{{serviceNumber}}</p>
+      </td>
+      <td class="value-width-25 padding-left">
+        <p class="normal">Sales Person</p>
+        <p class="normal font-weight-600">{{salesPerson}}</p>
+      </td>
+      {{#each customFields}}
+      <td class="value-width-25 padding-left">
+        <p class="normal">{{label}}</p>
+        <p class="normal font-weight-600">{{value}}</p>
+      </td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td colspan="5">
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr style="vertical-align: top;">
+      <td class="value-width-25 padding-left">
+        <p class="normal">Issue Date</p>
+        <p class="normal font-weight-600">{{issueDate}}</p>
+      </td>
+      <td class="value-width-25 padding-left">
+        <p class="normal">Expiry Date</p>
+        <p class="normal font-weight-600">{{expiryDate}}</p>
+      </td>
+      <td class="value-width-25 padding-left">
+        <p class="normal">Term</p>
+        <p class="normal font-weight-600">{{contractTerm}}</p>
+      </td>
+      <td class="value-width-25 padding-left">
+        <p class="normal">Client Name</p>
+        <p class="normal font-weight-600">{{clientName}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td class="value-width padding-left" style="line-height: 15px;">
+        <p class="normal">Billing Address</p>
+        <p class="normal font-weight-600">{{billingAddress}}</p>
+      </td>
+      <td class="value-width text-align-left" style="padding-left: 10px;line-height: 15px; vertical-align: top;">
+        <p class="normal">Service Address</p>
+        <p class="normal font-weight-600">{{serviceAddress}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td class="padding-left" style="line-height: 15px;">
+        <p class="normal">Quotation Title & Description</p>
+        <p class="text-bold">{{serviceTitle}}</p>
+        <p class="normal">{{{description}}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>

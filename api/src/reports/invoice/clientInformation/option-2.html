@@ -1,0 +1,71 @@
+<div class="border-bottom-secondary">
+  <table>
+    <tbody>
+      <tr style="vertical-align: top;">
+        <td class="value-width-20 padding-left">
+          <p class="normal">Attention To</p>
+          <p class="normal font-weight-600">{{attnTo}}</p>
+        </td>
+        <td class="value-width-20 padding-left">
+          <p class="normal">Invoice No</p>
+          <p class="normal font-weight-600">{{invoiceNo}}</p>
+        </td>
+        <td class="value-width-20 padding-left">
+          <p class="normal">Invoice Date</p>
+          <p class="normal font-weight-600">{{createdDate}}</p>
+        </td>
+        <td class="value-width-20 padding-left">
+          <p class="normal">Invoice Terms</p>
+          <p class="normal font-weight-600">{{dueDate}}</p>
+        </td>
+        <td class="value-width-20 padding-left">
+          <p class="normal">Sales Person</p>
+          <p class="normal font-weight-600">{{salesPerson}}</p>
+        </td>
+        {{#each customFields}}
+        <td class="value-width-20 padding-left">
+          <p class="normal">{{label}}</p>
+          <p class="normal font-weight-600">{{value}}</p>
+        </td>
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>
+<br />
+
+<div class="border-bottom-secondary">
+  <table>
+    <tbody>
+      <tr>
+        <td class="value-width padding-left" style="line-height: 15px;">
+          <p class="normal">Bill To</p>
+          <p class="normal font-weight-600">{{clientName}}</p>
+          <p class="normal">{{billingAddress}}</p>
+        </td>
+        <td class="value-width text-align-left" style="padding-left: 10px;line-height: 15px; vertical-align: top;">
+          <p class="normal">Service Address</p>
+          <p class="normal">{{serviceAddress}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>
+<br />
+
+<div class="border-bottom-secondary">
+  <table>
+    <tbody>
+      <tr>
+        <td class="padding-left" style="line-height: 15px;">
+          <p class="normal">Quotation Reference</p>
+          <p class="normal font-weight-600">{{contractNo}}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+</div>
+<br />

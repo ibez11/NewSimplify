@@ -1,0 +1,358 @@
+<html>
+    <head>
+        <style>
+         html {
+            font: 9px/1 'Open Sans', sans-serif;
+            overflow: auto;
+            padding: 0.1in;
+         }
+         .divContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between !important;
+            flex: none;
+            flex: 1 100%;
+            align-self: center;
+            padding: 0px 1.5em;
+            margin: 0;
+         }
+         .headTitle {
+            border: #000 1px;
+            background-color: #353c42;
+            sans-serif;
+            text-align: left;
+            color: #FFF;
+            height: 35px;
+         }
+         table,
+         tr,
+         td {
+            page-break-before: auto;
+         }
+         tr {
+            border-color: inherit;
+         }
+         td, th {
+            padding: 2px;
+            padding-right: 10px;
+            padding-left: 10px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+         }
+         .removeBorderBottom {
+            font-size: 9px;
+            border-bottom: 0px;
+         }
+         p.thicker {
+            font-weight: 400;
+         }
+         p.serviceName {
+            max-width: 180px;
+            word-wrap: break-word;
+         }
+         p.description {
+            color: grey;
+            font-size: 10px;
+            max-width: 180px;
+            word-wrap: break-word;
+            white-space: pre-line;
+         }
+         .MuiTable-root {
+            width: 100%;
+            display: table;
+            border-spacing: 0;
+            border-collapse: collapse;
+         }
+         .MuiTableHead-root {
+            display: table-header-group;
+         }
+         .MuiTableBody-root {
+            display: table-row-group;
+         }
+         .MuiTableCell-root {
+            display: table-cell;
+            padding: 8px;
+            font-size: 9px;
+            text-align: left;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 12px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            letter-spacing: 0.01071em;
+            vertical-align: inherit;
+         }
+         .MuiTableCell-root-right {
+            display: table-cell;
+            padding: 8px;
+            font-size: 9px;
+            text-align: right;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 12px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            letter-spacing: 0.01071em;
+            vertical-align: inherit;
+         }
+         .totalBackgroundColor {
+            background-color: #cbcbcb;
+         }
+         .infoDetails {
+            font-weight: bold;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="divContainer">
+            <table style="width: 100%;">
+               <tbody>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom">
+                            <img src={{logoUrl}} style="width: 50%;"/>
+                        </td>
+                        <td style="width: 100%;" class="removeBorderBottom">
+                            <p class="thicker" style="font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;">{{entityName}} <br/>
+                            {{entityAddress}} <br/> Phone : {{entityPhone}} <br/> Email : {{entityEmail}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 100%; padding-top: 15px;" colspan="4"><p style="border-bottom-style: solid;border-width: thin;border-color: #53A0BE"></p></td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <table style="width: 100%;">
+               <tbody>
+                    <tr>
+                        <td style="width: 50%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" class="removeBorderBottom">
+                            <p><b>Billing Address</b></p>
+                        </td>
+                        <td style="width: 50%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" class="removeBorderBottom">
+                            <p><b>Service Address</b></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="width: 50%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" class="removeBorderBottom">
+                           <p style="thicker">
+                           {{billingAddress}} <br/>
+                           {{billingUnitFloor}} <br/>
+                           {{billingPostal}} <br/>
+                           </p>
+                        </td>
+                        <td style="width: 50%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" class="removeBorderBottom">
+                           <p style="thicker">
+                           {{serviceAddress}} <br/>
+                           {{serviceUnitFloor}} <br/>
+                           {{servicePostal}} <br/>
+                           </p>
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <table style="width: 100%;">
+               <tbody>
+                    <tr>
+                        <td colspan="2" style="width: 100%; text-align: center; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" class="removeBorderBottom">
+                            <h4>{{serviceType}}</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" align="left" class="removeBorderBottom">
+                            <span><b>Client Name:</b> {{clientName}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 75%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" align="left" class="removeBorderBottom">
+                            <span><b>Contract Term:</b> {{termStart}} to {{termEnd}}</span>
+                        </td>
+                        <td style="width: 25%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" align="left" class="removeBorderBottom">
+                            <span><b>Contract ID: </b>#{{serviceNumber}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" align="left" class="removeBorderBottom">
+                            <span><b>Contract Title:</b> {{serviceTitle}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100%; font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;" align="left" class="removeBorderBottom">
+                            <span><b>Contract Description:</b> {{{description}}}</span>
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <table class="MuiTable-root">
+                <thead class="MuiTableHead-root">
+                <tr class="headTitle">
+                    <th class="MuiTableCell-root">#ID</th>
+                    <th class="MuiTableCell-root">DATE</th>
+                    <th class="MuiTableCell-root">SERVICE ITEM</th>
+                    <th class="MuiTableCell-root">QTY</th>
+                    <th class="MuiTableCell-root">Price</th>
+                    <th class="MuiTableCell-root">Total</th>
+                </tr>
+                </thead>
+                <tbody class="MuiTableBody-root">
+                {{#each contractData}}
+                <table>
+                <tr>
+                     <td class="MuiTableCell-root" style="width: 13%;">
+                        <p>#{{jobId}}</p>
+                    </td>
+                    <td class="MuiTableCell-root" style="width: 14%;">
+                        <p>{{jobDate}}</p>
+                    </td>
+                   <td class="MuiTableCell-root" style="width: 200px;">
+                        <p class="serviceName">{{name}}</p>
+                        <p class="description">{{description}}</p>
+                    </td>
+                    <td class="MuiTableCell-root" style="width: 10%;">
+                        <p>{{quantity}}</p>
+                    </td>
+                    <td class="MuiTableCell-root" style="width: 15%;">
+                        <p>${{unitPrice}}</p>
+                    </td>
+                    <td class="MuiTableCell-root" style="width: 15%;">
+                        <p>${{totalPrice}}</p>
+                    </td>
+                </tr>
+                </table>
+                {{/each}}
+                <table>
+                <tr>
+                    <td class="MuiTableCell-root-right" style="width: 100%;" align="right">
+                        <p>Amount</p>
+                    </td>
+                    <td class="MuiTableCell-root-right" style="width: 10%;" align="right" >
+                        <p>${{originalAmount}}</p>
+                    </td>
+                </tr>
+                </table>
+                <table>
+                <tr>
+                    <td class="MuiTableCell-root-right" style="width: 100%;" align="right">
+                        <p>Discount</p>
+                    </td>
+                    <td class="MuiTableCell-root-right" style="width: 10%;" align="right" >
+                        <p>${{discountAmount}}</p>
+                    </td>
+                </tr>
+                </table>
+                <table>
+                <tr>
+                    <td class="MuiTableCell-root-right" style="width: 100%;" align="right">
+                        <p>GST 7%</p>
+                    </td>
+                    <td class="MuiTableCell-root-right" style="width: 10%;" align="right" >
+                         <p>${{gstAmount}}</p>
+                    </td>
+                </tr>
+                </table>
+                <table>
+                <tr>
+                    <td class="MuiTableCell-root-right" style="width: 100%;" align="right">
+                        <p>BALANCE DUE</p>
+                    </td>
+                    <td class="MuiTableCell-root-right" style="width: 10%;" align="right" >
+                         <p>${{totalAmount}}</p>
+                    </td>
+                </tr>
+                </table>
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <div class="divContainer">
+            <table style="width: 100%;">
+               <tbody>
+                    <tr>
+                        <td class="removeBorderBottom">
+                            <p><b>Terms & Conditions : </b></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:8px; font-family: Roboto, Helvetica, Arial, sans-serif;" align="left" class="removeBorderBottom">
+                            <p>{{{termCondition}}}</p>
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+        <br/>
+        <br/>
+        <div class="divContainer">
+            <table style="width: 100%;">
+               <tbody>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 10%;"  align="left">
+                           <p>Accepted By :</p>
+                            <br/>
+                            <br/>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 10%;"  align="left">
+                           <p>Prepared By :</p>
+                            <br/>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 10%;"  align="left">
+                           <p style="border-bottom-style: solid;border-width: thin;border-color: #000000"></p>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 10%;"  align="right">
+                           <p style="border-bottom-style: solid;border-width: thin;border-color: #000000"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 10%;"  align="left">
+                           <p>Customer's Signature</p>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 10%;"  align="left">
+                           <p>Service Coordinator</p>
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+        <br/>
+        <br/>
+        <div class="divContainer">
+            <table style="width: 100%;">
+               <tbody>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 11%;"  align="left">
+                           <p></p>
+                            <br/>
+                            <br/>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 10%; padding-left: 20px;"  align="left">
+                           <p>Approved By :</p>
+                            <br/>
+                            <br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 11%;"  align="left">
+                           <p style="border-bottom-style: solid;border-width: thin;border-color: #ffffff"></p>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 10%; padding-left: 20px;"  align="right">
+                           <p style="border-bottom-style: solid;border-width: thin;border-color: #000000"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 11%;"  align="left">
+                           <p></p>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 10%; padding-left: 20px;"  align="left">
+                           <p>Head of Department</p>
+                        </td>
+                    </tr>
+               </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+interface JobLabelModel {
+  id: number;
+  name: string;
+  description: string;
+  color: string;
+}

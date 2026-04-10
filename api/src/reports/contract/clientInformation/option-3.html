@@ -1,0 +1,107 @@
+<table>
+  <tbody>
+    <tr style="vertical-align: top;">
+      <td class="value-width-20 padding-left">
+        <p class="normal font-weight-600">Billed By :</p>
+        <p class="normal">{{entityName}}</p>
+        <p class="normal position-relative">UEN No. : {{ uenNumber }} | GST Reg. No. : {{registerNumberGST}}</p>
+        <p class="normal position-relative">{{entityAddress}}</p>
+        <p class="normal position-relative">Phone : {{entityPhone}} | Email : {{entityEmail}}</p>
+      </td>
+      <td class="value-width-20 padding-left">
+        <p class="normal font-weight-600">Bill To :</p>
+        <p class="normal">{{clientName}}</p>
+        <p class="normal">{{billingAddress}}</p>
+        <br />
+        <p class="normal font-weight-600">Service Address :</p>
+        <p class="normal">{{serviceAddress}}</p>
+      </td>
+      <td class="value-width-20 padding-left">
+        <table>
+          <tbody style="line-height: 18px; white-space: nowrap;">
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Quotation ID</p>
+              </td>
+              <td class="text-align-left">
+                <p class="normal">#{{serviceNumber}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Issue Date</p>
+              </td>
+              <td class="text-align-left">
+                <p class="normal">{{issueDate}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Expiry Date</p>
+              </td>
+              <td class="text-align-left">
+                <p class="normal">{{expiryDate}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Term</p>
+              </td>
+              <td class="text-align-left">
+                <p class="normal">{{contractTerm}}</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100px;">
+                <p class="thinner normal">Sales Person</p>
+              </td>
+              <td class="text-align-left">
+                <p class="normal">{{salesPerson}}</p>
+              </td>
+            </tr>
+            <tr style="vertical-align: baseline;">
+              <td style="width: 100px;">
+                <p class="thinner normal">Client Name</p>
+              </td>
+              <td class="text-align-left" style="word-break: break-all; white-space: normal;">
+                <p class="normal" style="margin: 0; padding: 0">{{clientName}}</p>
+              </td>
+            </tr>
+            {{#each customFields}}
+            <tr style="vertical-align: baseline;">
+              <td style="width: 100px;">
+                <p class="thinner normal">{{label}}</p>
+              </td>
+              <td class="text-align-left" style="word-break: break-all; white-space: normal;">
+                <p class="normal">{{value}}</p>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td class="padding-left" style="line-height: 15px;">
+        <p class="normal font-weight-600">Quotation Title & Description</p>
+        <p class="text-bold">{{serviceTitle}}</p>
+        <p class="normal">{{{description}}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+      </td>
+    </tr>
+  </tbody>
+</table>

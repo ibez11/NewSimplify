@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <style>
+         html {
+            font: 9px/1 'Open Sans', sans-serif;
+            overflow: auto;
+            padding: 0.1in;
+         }
+         .divContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between !important;
+            flex: none;
+            flex: 1 100%;
+            align-self: center;
+            padding: 0px 1.5em;
+            margin: 0;
+         }
+         .headTitle {
+            border: #000 1px;
+            background-color: #353c42;
+            sans-serif;
+            text-align: left;
+            color: #FFF;
+            height: 35px;
+         }
+         tr {
+            border-color: inherit;
+         }
+         td, th {
+            padding: 2px;
+            padding-right: 10px;
+            padding-left: 10px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+         }
+         .removeBorderBottom {
+            font-size: 9px;
+            border-bottom: 0px;
+         }
+         p.thicker {
+            font-weight: 400;
+         }
+         p.description {
+            color: grey;
+            font-size: 8px;
+            word-break: break-all;
+         }
+         .MuiTable-root {
+            width: 100%;
+            display: table;
+            border-spacing: 0;
+            border-collapse: collapse;
+         }
+         .MuiTableHead-root {
+            display: table-header-group;
+         }
+         .MuiTableBody-root {
+            display: table-row-group;
+         }
+         .MuiTableCell-root {
+            display: table-cell;
+            padding: 16px;
+            font-size: 9px;
+            text-align: left;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 12px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            letter-spacing: 0.01071em;
+            vertical-align: inherit;
+         }
+         .MuiTableCell-root-right {
+            display: table-cell;
+            padding: 16px;
+            font-size: 9px;
+            text-align: right;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            line-height: 12px;
+            border-bottom: 1px solid rgba(224, 224, 224, 1);
+            letter-spacing: 0.01071em;
+            vertical-align: inherit;
+         }
+         .totalBackgroundColor {
+            background-color: #cbcbcb;
+         }
+         .infoDetails {
+            font-weight: bold;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="divContainer">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td style="width: 30%;" class="removeBorderBottom">
+                            <img src={{logoUrl}} style="width: 50%;"/>
+                        </td>
+                        <td style="width: 100%;" class="removeBorderBottom">
+                            <p class="thicker" style="font-size:9px; font-family: Roboto, Helvetica, Arial, sans-serif;">{{entityName}} <br/>
+                            {{entityAddress}} <br/> Phone : {{entityContactNumber}} <br/> Email : {{entityEmail}}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom">
+                            <p class="thicker" style="font-size: 9px;color: #53A0BE;margin-top: 10px;">INVOICE</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="divContainer">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 30%;vertical-align: top;">
+                            <span>BILL TO</span><br />
+                            <span>{{clientName}}</span><br />
+                            <span>{{billingAddress}}</span>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 30%;vertical-align: top;">
+                            <span>SHIP TO</span><br />
+                            <span>{{clientName}}</span><br />
+                            <span>{{serviceAddress}}</span>
+                        </td>
+                        <td class="removeBorderBottom" style="width: 20%;vertical-align: top;" align="right">
+                            <span>INVOICE NO.</span> <br />
+                            <span>DATE</span> <br />
+                            <span>DUE DATE</span> <br />
+                            <span>TERMS</span> <br />
+                        </td>
+                        <td class="removeBorderBottom" style="vertical-align: top;">
+                            <span>{{invoiceNo}}</span> <br />
+                            <span>{{createdDate}}</span> <br />
+                            <span>{{termEnd}}</span> <br />
+                            <span>Due on receipt</span> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" style="width: 100%; padding-top: 15px;" colspan="4"><p style="border-bottom-style: solid;border-width: thin;border-color: #53A0BE"></p></td>
+                    </tr>
+                    <tr>
+                        <td class="removeBorderBottom" colspan="2">
+                            <span>SHIP DATE</span><br />
+                            <span>{{termStart}}</span>
+                        </td>
+                        <td class="removeBorderBottom" colspan="2">
+                            <span>TRACKING NO.</span><br />
+                            <span>{{contractNo}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div class="divContainer">
+            <table class="MuiTable-root">
+                <thead class="MuiTableHead-root">
+                <tr class="headTitle">
+                    <th class="MuiTableCell-root">Date</th>
+                    <th class="MuiTableCell-root">Service Name</th>
+                    <th class="MuiTableCell-root">Qty</th>
+                    <th class="MuiTableCell-root">Price</th>
+                    <th class="MuiTableCell-root">Total</th>
+                </tr>
+                </thead>
+                <tbody class="MuiTableBody-root">
+                {{#each contractData}}
+                <tr>
+                    <td class="MuiTableCell-root">
+                        <p>{{jobDate}}</p>
+                    </td>
+                   <td class="MuiTableCell-root">
+                        <p>{{name}}</p>
+                        <p class="description">{{description}}</p>
+                    </td>
+                    <td class="MuiTableCell-root">
+                        <p>{{quantity}}</p>
+                    </td>
+                    <td class="MuiTableCell-root">
+                        <p>${{unitPrice}}</p>
+                    </td>
+                    <td class="MuiTableCell-root">
+                        <p>${{totalPrice}}</p>
+                    </td>
+                </tr>
+                {{/each}}
+                <tr>
+                    <td class="MuiTableCell-root-right" colspan="4">
+                        <p>Amount</p>
+                    </td>
+                    <td class="MuiTableCell-root" >
+                        <p>${{originalAmount}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MuiTableCell-root-right" colspan="4">
+                        <p>GST 7%</p>
+                    </td>
+                    <td class="MuiTableCell-root" >
+                        <p>${{gstAmount}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MuiTableCell-root-right" colspan="4">
+                        <p>BALANCE DUE</p>
+                    </td>
+                    <td class="MuiTableCell-root" >
+                        <p>${{invoiceAmount}}</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

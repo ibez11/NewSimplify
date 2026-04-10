@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Job Schedule Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet" />
+    <style>
+      @page {
+        orientation: landscape;
+        margin-top: 20px;
+      }
+      html {
+        font: 11px/1 'Noto Serif SC', serif;
+        overflow: auto;
+        padding: 0.1in;
+      }
+      table {
+        width: 100%;
+        page-break-inside: avoid;
+        border-spacing: 0; /* Removes the cell spacing via CSS */
+        border-collapse: collapse; /* Optional - if you don't want to have double border where cells touch */
+      }
+      .container {
+        padding: 0;
+        margin: 0;
+      }
+      .align-right {
+        text-align: right;
+      }
+      p.thicker {
+        font-weight: 400;
+        font-size: 9px;
+        line-height: 12px;
+      }
+      p.thinner {
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 8px;
+      }
+      p.title {
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 8px;
+      }
+      p.normal {
+        margin: 0;
+        margin-bottom: 8px;
+      }
+      p.description {
+        /* word-break: break-all; */
+        word-wrap: break-word;
+        white-space: pre-line;
+        margin: 0;
+        margin-bottom: 8px;
+        font-size: 8px;
+      }
+      .info-width {
+        width: 15%;
+      }
+      .value-width {
+        width: 30%;
+      }
+      .font-table {
+        font-size: 9px;
+      }
+      .primary-color {
+        background-color: #53a0be;
+      }
+      .secondary-color {
+        background-color: #f4f4f4;
+      }
+      th {
+        color: black;
+        font-weight: lighter;
+        height: 20px;
+      }
+      th,
+      tr,
+      td {
+        page-break-inside: avoid;
+        /* page-break-after: auto; */
+      }
+      img {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      .text-align-left {
+        text-align: left;
+      }
+      .text-align-center {
+        text-align: center;
+      }
+      .xsmall-width {
+        width: 7%;
+        max-width: 7%;
+      }
+      .small-width {
+        width: 9%;
+        max-width: 9%;
+      }
+      .medium-width {
+        width: 12%;
+        max-width: 12%;
+      }
+      .large-width {
+        width: 50%;
+        max-width: 50%;
+      }
+      .item-width {
+        width: 90%;
+      }
+      .padding-left {
+        padding-left: 8px;
+      }
+      .padding-top {
+        padding-top: 8px;
+      }
+      .border {
+        border: 1px solid #222b45;
+      }
+      .margin-bottom {
+        margin-bottom: 8px;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+      .container1 {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      /* Hide the browser's default checkbox */
+      .container1 input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      /* Create a custom checkbox */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 14px;
+        width: 14px;
+        background-color: #eee;
+      }
+
+      /* When the checkbox is checked, add a blue background */
+      .container input:checked ~ .checkmark {
+        background-color: #53a0be;
+      }
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: '';
+        position: absolute;
+        display: none;
+      }
+
+      /* Show the checkmark when checked */
+      .container1 input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      /* Style the checkmark/indicator */
+      .container1 .checkmark:after {
+        left: 4px;
+        top: 0px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      .subtask {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      .quater-width {
+        width: 40%;
+      }
+      .subtask-width {
+        width: 30%;
+      }
+      .image-column-width {
+        width: 30%;
+      }
+      .image-width {
+        width: 50px;
+        height: 50px;
+        object-fit: 'scale-down';
+      }
+      .break-line {
+        white-space: pre-line;
+      }
+      .w-20 {
+        width: 20%;
+      }
+      .w-50 {
+        width: 50%;
+      }
+      .notes-padding {
+        padding-bottom: 8px;
+        padding-top: 8px;
+      }
+      @media print {
+        td,
+        img {
+          /* page-break-after: avoid; */
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table>
+        <tbody>
+          <tr>
+            <td style="width: 40%;">
+              <img src="{{logoUrl}}" style="width: 60%; padding: 8px;" />
+            </td>
+            <td>
+              <p class="title">
+                {{companyName}}
+              </p>
+              <p class="thicker">
+                {{companyAddress}} <br />
+                Phone : {{companyContactNumber}} <br />
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p style="border-bottom-style: solid;border-width: thin;border-color: #9a9a9a"></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container">
+      <p class="title" style="padding-left: 4px;">Daily Job List</p>
+      <p style="padding-left: 4px;">Date : {{scheduleDate}}</p>
+    </div>
+
+    <div class="container">
+      <table>
+        {{#each dataTables}}
+        <table class="font-table margin-bottom">
+          <thead class="secondary-color">
+            <th class="text-align-center border">Job Id</th>
+            <th class="text-align-center border">Job Sequence</th>
+            <th class="text-align-center border">Start - End Date Time</th>
+            <th class="text-align-center border">Client Name</th>
+            <th class="text-align-center border">Service Address</th>
+            <th class="text-align-center border">Contact Person & Phone No</th>
+            <th class="text-align-center border">Quotation Title</th>
+            <th class="text-align-center border">Invoice No.</th>
+            <th class="text-align-center border">Assigned Employee</th>
+            <th class="text-align-center border">Assigned Vehicle</th>
+            <th class="text-align-center border">Job Status</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="xsmall-width padding-left border">
+                #{{jobId}}
+              </td>
+              <td class="xsmall-width padding-left border">
+                {{sequenceJob}} / {{ totalJob }}
+              </td>
+              <td class="small-width padding-left border">
+                {{scheduleTime}}
+              </td>
+              <td class="small-width padding-left border">
+                {{clientName}}
+              </td>
+              <td class="medium-width padding-left border">
+                {{serviceAddress}}
+              </td>
+              <td class="small-width padding-left border">
+                {{contactPerson}} : {{contactNumber}}
+              </td>
+              <td class="small-width padding-left border">
+                {{contractTitle}}
+              </td>
+              <td class="xsmall-width padding-left border">
+                {{invoiceNumber}}
+              </td>
+              <td class="small-width padding-left border">
+                {{employees}}
+              </td>
+              <td class="small-width padding-left border">
+                {{vehicles}}
+              </td>
+              <td class="small-width padding-left border">
+                {{jobStatus}}
+              </td>
+            </tr>
+            <tr>
+              <td class="padding-left border" colspan="11">
+                <p class="normal">Service Item(s):</p>
+                <ul>
+                  {{#each ServiceItem}}
+                  <li>
+                    <p class="normal">{{name}}</p>
+                    <p class="description">{{description}}</p>
+                  </li>
+                  {{/each}}
+                </ul>
+              </td>
+            </tr>
+            {{#if haveAdditionalItem}}
+            <tr>
+              <td class="padding-left border" colspan="11">
+                <p class="normal">Additional Service Item(s):</p>
+                <ul>
+                  {{#each AdditionalServiceItem}}
+                  <li>
+                    <p class="normal">{{name}}</p>
+                    <p class="description">{{description}}</p>
+                  </li>
+                  {{/each}}
+                </ul>
+              </td>
+            </tr>
+            {{else}}{{/if}}
+            <tr>
+              <td class="padding-left border" colspan="{{colspan}}">
+                <p class="normal">Amount Collected:</p>
+                <p class="normal">${{collectedAmount}}</p>
+              </td>
+              <td class="padding-left border" colspan="{{colspan}}">
+                <p class="normal">Payment Method:</p>
+                <p class="normal">{{paymentMethod}}</p>
+              </td>
+              {{#each customFields}}
+              <td class="padding-left border" colspan="{{../colspan}}">
+                <p class="normal">{{label}}</p>
+                <p class="normal">{{value}}</p>
+              </td>
+              {{/each}}
+            </tr>
+          </tbody>
+        </table>
+
+        {{#if isRemarksShow}}
+        <table class="font-table margin-bottom">
+          <tbody>
+            <tr>
+              <td class="padding-left border" style="vertical-align: top;width: 50%;">
+                <p class="normal">Job Remarks:</p>
+                <p class="normal">{{remarks}}</p>
+              </td>
+              <td class="padding-left border" style="vertical-align: top;width: 50%;">
+                <p class="normal">Internal Notes:</p>
+                <p class="normal">{{clientRemarks}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{/if}} {{#if isNotesShow}}
+        <table class="font-table margin-bottom">
+          <tbody>
+            <tr>
+              <!-- <td class="padding-left border" style="vertical-align: top;width: 50%;">
+                <p class="normal">General Job Notes:</p>
+                {{#if isGeneralNotesEmpty}}
+                <p class="normal">-</p>
+                {{else}} {{#each generalNotes}}
+                <table>
+                  <tr class="notes-row-table border-bottom-primary">
+                    <td class="image-column-width notes-padding"><img src="{{imageUrl}}" class="image-width" /></td>
+                    <td class="padding-left">
+                      <p class="normal break-line" style="width: auto;padding-right: 30px;">{{notes}}</p>
+                    </td>
+                  </tr>
+                </table>
+
+                {{/each}} {{/if}}
+              </td> -->
+              <td class="padding-left border" style="vertical-align: top;width: 50%;">
+                <p class="normal">Job Notes:</p>
+                {{#if isJobNotesEmpty}}
+                <p class="normal">-</p>
+                {{else}} {{#each jobtNotes}}
+                <table>
+                  <tr class="border-bottom-secondary">
+                    <td class="xsmall-width" style="vertical-align: top;">
+                      <img src="{{imageUrl}}" class="image-width" />
+                    </td>
+                    <td style="vertical-align: top;">
+                      <table>
+                        <tr>
+                          <td style="vertical-align: top; width: 100px;"><p class="thinner">Tagged Equipment</p></td>
+                          <td>
+                            {{#if Equipment}}
+                            <ul style="padding-left: 15px; margin-top: 0px;">
+                              {{#each Equipment}}
+                              <li><p class="normal">{{brand}} {{model}} - {{serialNumber}} {{#if location}} ({{location}}) {{else}}{{/if}}</p></li>
+                              {{/each}}
+                            </ul>
+                            {{else}}
+                            <p class="normal">-</p>
+                            {{/if}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="" style="vertical-align: top;"><p class="thinner">Notes</p></td>
+                          <td class=""><p class="normal break-line" style="padding-right: 30px;">{{notes}}</p></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                {{/each}} {{/if}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{/if}} {{/each}}
+      </table>
+    </div>
+  </body>
+</html>

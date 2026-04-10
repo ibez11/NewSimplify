@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      @page {
+          size: A4;
+          margin: 1.5cm 0;
+      }
+      html {
+        font: 12px/1 'Noto Serif SC', serif;
+        overflow: auto;
+      }
+      body {
+        margin: 0 1em;
+        padding: 0;
+      }
+      table {
+        width: 100%;
+        page-break-inside: auto;
+        border-spacing: 0; /* Removes the cell spacing via CSS */
+        border-collapse: collapse; /* Optional - if you don't want to have double border where cells touch */
+      }
+      .container {
+        padding: 0;
+        margin: 0;
+      }
+      .align-right {
+        text-align: right;
+      }
+      p.thicker {
+        font-weight: 400;
+        font-size: 9px;
+        line-height: 12px;
+      }
+      p.thinner {
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+      p.normal {
+        margin: 0;
+        margin-bottom: 8px;
+      }
+      p.description {
+        /* word-break: break-all; */
+        word-wrap: break-word;
+        white-space: pre-line;
+        margin: 0;
+        margin-bottom: 8px;
+        line-height: 150%;
+        font-size: 10px;
+        color: #0e0e0e;
+      }
+      .info-width {
+        width: 15%;
+      }
+      .value-width {
+        width: 30%;
+      }
+      .font-table {
+        font-size: 12px;
+      }
+      .primary-color {
+        background-color: #53a0be;
+      }
+      .secondary-color {
+        background-color: #222b45;
+      }
+      th {
+        /* color: #000; */
+        font-weight: lighter;
+        height: 20px;
+      }
+      th,
+      tr,
+      td {
+        page-break-inside: avoid;
+        /* page-break-after: auto; */
+      }
+      .header-table {
+        background-color: #333333;
+      }
+      img {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      .text-align-center {
+        text-align: center;
+      }
+      .text-align-left {
+        text-align: left;
+      }
+      .text-align-right {
+        text-align: right;
+      }
+      .item-width {
+        width: 60%;
+      }
+      .other-width {
+        width: 10%;
+      }
+      .padding-left {
+        padding-left: 8px;
+      }
+      .padding-top {
+        padding-top: 8px;
+      }
+      .notes-row-table {
+        vertical-align: inherit;
+      }
+      .image-column-width {
+        width: 30%;
+      }
+      .image-width {
+        width: 70px;
+        height: 70px;
+        object-fit: 'scale-down';
+        margin: 1.5px;
+      }
+      .border-bottom-primary {
+        border-bottom: 1px solid #c1c1c1;
+      }
+      .border-bottom-secondary {
+        border-bottom: 1px solid #222b45;
+      }
+      .border-bottom-third td {
+        border-bottom: 1px solid #e1e1e1;
+      }
+      .border-top-third td {
+        border-top: 1px solid #eaeaea;
+        padding-top: 10px;
+      }
+      .notes-padding {
+        padding-bottom: 8px;
+        padding-top: 8px;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+      .container1 {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      /* Hide the browser's default checkbox */
+      .container1 input { 
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      /* Create a custom checkbox */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 14px;
+        width: 14px;
+        background-color: #eee;
+      }
+
+      /* When the checkbox is checked, add a blue background */
+      .container input:checked ~ .checkmark {
+        background-color: #53a0be;
+      }
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: '';
+        position: absolute;
+        display: none;
+      }
+
+      /* Show the checkmark when checked */
+      .container1 input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      /* Style the checkmark/indicator */
+      .container1 .checkmark:after {
+        left: 4px;
+        top: 0px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+      .subtask {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+      .quater-width {
+        width: 40%;
+      }
+      .subtask-width {
+        width: 30%;
+      }
+      .footer-table {
+        width: 650px;
+      }
+      .break-line {
+        white-space: pre-line;
+      }
+      .chips {
+        padding: 4px 6px 4px 6px;
+        border-radius: 20px;
+        min-width: 40px;
+        text-align: center;
+        float: right;
+        margin-top: 6px;
+      }
+      .chips-text {
+        position: relative;
+        font-weight: 600;
+      }
+      .chipsEquipment {
+        padding: 4px 6px;
+        border-radius: 20px;
+        min-width: 40px;
+        text-align: center;
+      }
+      .Main {
+        color: #53A0BE;
+        background: #DFFBFB;
+      }
+      .Sub {
+        color: #FFAA00;
+        background: #FFF4CC;
+      }
+      .inline-table {
+        display: inline-table;
+        border-collapse: collapse;
+        text-align: right;
+      }
+
+      .inline-table td, .inline-table th {
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        display: inline-block;
+        padding: 8px;
+      }
+      
+      p.mr-20 {
+          margin-right: 20px;
+      }
+
+      .w-30 {
+        width: 20%;
+      }
+
+      .w-50 {
+        width: 50%;
+      }
+
+      .content {
+        margin-top: 0;
+        page-break-after: avoid;
+      }
+
+      .sub-content {
+        align-self: stretch;
+        border-bottom: 1px solid #c1c1c1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 12px 0px 24px;
+        gap: 20px;
+      }
+      .tenant-logo {
+        width: 129px;
+        position: relative;
+        height: 126px;
+        object-fit: cover;
+      }
+      .header {
+        align-self: stretch;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+      }
+      .company-name {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 14px;
+      }
+      .flex-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .position-relative {
+        position: relative;
+      }
+      .gap-8 {
+        gap: 8px;
+      }
+      .service-type {
+        align-self: center;
+        position: relative;
+        font-size: 22px;
+        display: inline;
+        flex-shrink: 0;
+        text-align: right;
+      }
+      .medium-width {
+        width: 30%;
+      }
+      .header-primary {
+        background-color: #f4f4f4;
+        color: #000;
+      }
+      .header-secondary {
+        background-color: #848484;
+        color: #fff;
+      }
+      .table-cell {
+        padding-top: 8px;
+        vertical-align: top;
+        text-align: center;
+      }
+      .f-15 {
+        font-size: 15px;
+      }
+      .text-bold {
+        font-weight: bold;
+      }
+      .font-weight-600 {
+        font-weight: 600;
+      }
+      .chips-completed {
+        background-color: #D4FAD4;
+        color: #27AE60;
+      }
+      .chips-unassigned {
+        background-color: #F4F4F4;
+        color: #848484;
+      }
+      .chips-assigned {
+        background-color: #DFFBFB;
+        color: #53A0BE;
+      }
+      .chips-inprogress {
+        background-color: #53A0BE;
+        color: #DFFBFB;
+      }
+      .chips-confirmed {
+        background-color: #FFF4CC;
+        color: #FFAA00;
+      }
+      .chips-cancelled {
+        background-color: #EB5757;
+        color: #FEE9DE;
+      }
+      .chips-paused {
+        background-color: #848484;
+        color: #F4F4F4;
+      } 
+      @media print {
+        td,
+        img {
+          /* page-break-after: avoid; */
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="content">
+      <div class="sub-content">
+        <img src="{{logoUrl}}" style="width: 15%;" />
+        
+        <div class="header">
+          <div class="company-name">
+            <b class="position-relative">{{entityName}}</b>
+          </div>
+          <div class="flex-row">
+            <div class="position-relative">UEN No. : {{ uenNumber }} | GST Reg. No. : {{registerNumberGST}}</div>
+          </div>
+          <div class="position-relative">{{entityAddress}}</div>
+          <div class="flex-row">
+            <div class="position-relative">Phone : {{entityContactNumber}} | Email : {{entityEmail}}</div>
+          </div>
+        </div>
+        <div>
+          <b class="service-type">SERVICE REPORT</b>
+          <div class="chips-status">
+              <div class="chips {{chipsStatus}}">
+                  <div class="content">
+                      <div class="chips-text">{{ jobStatus }}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+    <br />
+
+    <table>
+      <tbody>
+        <tr >
+          <td class="padding-left">
+            <p class="normal">Contact Person</p>
+            <p class="normal font-weight-600">{{ contactPerson }}{{#unless hideContactNumber}} ({{contactNumber}}){{/unless}}</p>
+          </td>
+          <td class="text-align-left padding-left">
+            <p class="normal">Service Address</p>
+            <p class="normal font-weight-600">{{ serviceAddress }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-align-left padding-left" style="vertical-align: top; width:50%; ">     
+            <table>
+              <tbody>
+                <tr>
+                  <td class="medium-width" style="vertical-align: top;">
+                    <p class="normal">Client Name</p>
+                  </td>
+                  <td>
+                    <p class="normal font-weight-600">{{clientName}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="medium-width" style="vertical-align: top;">
+                    <p class="normal">Client Signature</p>
+                  </td>
+                  <td style="vertical-align: top;">
+                    {{#if clientSignature}}
+                    <img src="{{clientSignature}}" style="max-width: 50px; max-height: 50px;padding: 0; margin: 0;" /> {{else}}-{{/if}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td class="text-align-left padding-left" style="vertical-align: top; width:50%;">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="medium-width">
+                    <p class="normal">Job ID</p>
+                  </td>
+                  <td>
+                    <p class="normal font-weight-600">#{{id}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="medium-width">
+                    <p class="normal">Date & Time</p>
+                  </td>
+                  <td>
+                    <p class="normal font-weight-600">{{startTime}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="medium-width" style="vertical-align: top;">
+                    <p class="normal">Vehicle</p>
+                  </td>
+                  <td style="vertical-align: top;">
+                    <p class="normal font-weight-600">{{vehicleNumber}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="medium-width" style="vertical-align: top;">
+                    <p class="normal">Technician</p>
+                  </td>
+                  <td style="vertical-align: top;">
+                    <p class="normal font-weight-600">{{driverName}}</p>
+                  </td>
+                </tr>
+                {{#each customFields}}
+                <tr>
+                  <td class="medium-width">
+                    <p class="normal">{{label}}</p>
+                  </td>
+                  <td>
+                    <p class="normal font-weight-600">{{value}}</p>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <p style="border-bottom-style: solid;border-width: thin;border-color: #c1c1c1"></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="container">
+      <table>
+        {{#if priceVisibility}}
+        <table class="font-table">
+          <thead class="header-table">
+            <tr>
+              <th class="header-secondary" colspan="5">Service Item</th>
+            </tr>
+            <tr class="header-primary">
+              <th class="item-width padding-left text-align-left">Service Item Name</th>
+              <th class="other-width">Price</th>
+              <th class="other-width">Qty</th>
+              {{#if serviceItemDiscountVisibility}}
+              <th class="other-width">Discount</th>
+              {{else}}{{/if}}
+              <th class="other-width">Total Price</th>
+            </tr>
+          </thead>
+          <tbody class="font-table">
+            {{#each dataTables}}
+            <tr class="border-bottom-primary">
+              <td class="padding-left" style="padding-top: 8px;">
+                <p class="normal">{{name}}</p>
+                <p class="description">{{description}}</p>
+                <ul>
+                  {{#each Equipments}}
+                  <li style="margin-bottom: 10px;">{{brand}} {{model}} - {{serialNumber}} {{#if location}} ({{location}}) {{else}}{{/if}}</li>
+                  {{/each}}
+                </ul>
+              </td>
+              <td class="table-cell">${{unitPrice}}</td>
+              <td class="table-cell">{{quantity}}</td>
+              {{#if isDiscountVisible}}
+              <td class="table-cell">${{discountAmt}}</td>
+              {{else}}{{/if}}
+              <td class="table-cell">${{totalPrice}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr class="border-top-third">
+              <td class="footer-table padding-left align-right">
+                <p class="normal">Job Amount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{jobAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{#if discountVisiblity}}
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Quotation Discount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{discountAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{else}}{{/if}}
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">GST {{gstTax}}%</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{gstAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Total Amount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{totalAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Collected Amount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{collectedAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{else}}
+        <table class="font-table">
+          <thead class="header-table">
+            <tr>
+              <th class="header-secondary" colspan="2">Service Item</th>
+            </tr>
+            <tr class="header-primary">
+              <th class="item-width padding-left text-align-left">Service Item Name</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody class="font-table ">
+            {{#each dataTables}}
+            <tr class="border-bottom-primary">
+              <td class="padding-left">
+                <p class="normal" style="padding-top: 8px;">{{name}}</p>
+                <p class="description">{{description}}</p>
+                <ul>
+                  {{#each Equipments}}
+                  <li style="margin-bottom: 10px;">{{brand}} {{model}} - {{serialNumber}} {{#if location}} ({{location}}) {{else}}{{/if}}</li>
+                  {{/each}}
+                </ul>
+              </td>
+              <td>
+                <p class="normal" style="text-align: center;">{{quantity}}</p>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+      </table>
+    </div>
+    <br />
+    <br />
+
+    {{#if additionalItem}}
+    <div class="container">
+      <table>
+        {{#if priceVisibility}}
+        <table class="font-table">
+          <thead class="header-table">
+            <tr>
+              <th class="header-secondary" colspan="5">Additional Item</th>
+            </tr>
+            <tr class="header-primary">
+              <th class="item-width padding-left text-align-left">Service Item Name</th>
+              <th class="other-width">Price</th>
+              <th class="other-width">Qty</th>
+              {{#if serviceItemDiscountVisibility}}
+              <th class="other-width">Discount</th>
+              {{else}}{{/if}}
+              <th class="other-width">Amount</th>
+            </tr>
+          </thead>
+          <tbody class="font-table">
+            {{#each dataAdditionalServiceItems}}
+            <tr class="border-bottom-primary">
+              <td class="padding-left">
+                <p class="normal" style="padding-top: 8px;">{{name}}</p>
+                <p class="description">{{description}}</p>
+                <ul>
+                  {{#each Equipments}}
+                  <li>{{brand}} {{model}} - {{serialNumber}} {{#if location}} ({{location}}) {{else}}{{/if}}</li>
+                  {{/each}}
+                </ul>
+              </td>
+              <td class="table-cell">${{unitPrice}}</td>
+              <td class="table-cell">{{quantity}}</td>
+              {{#if isDiscountVisible}}
+              <td class="table-cell">${{discountAmt}}</td>
+              {{else}}{{/if}}
+              <td class="table-cell">${{totalPrice}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr class="border-top-third">
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Job Amount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{additionalAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{#if additionalDiscountVisiblity}}
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Discount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{additionalDiscountAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        {{else}}{{/if}}
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">GST {{gstTax}}%</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{additionalGstAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Total Amount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{totalAdditionalAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal ">Collected Amount</p>
+              </td>
+              <td class="padding-left">
+                <p class="normal text-align-right mr-20">${{collectedAdditionalAmount}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <table >
+          <tbody>
+            <tr>
+              <td class="footer-table padding-left align-right">
+                <p class="normal f-15 text-bold">Total Outstanding</p>
+              </td>
+              <td class="">
+                <p class="normal f-15 text-bold text-align-right mr-20">${{totalOutstanding}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table> -->
+        {{else}}
+        <table class="font-table">
+          <thead class="header-table">
+            <tr>
+              <th class="header-secondary" colspan="2">Additional Item</th>
+            </tr>
+            <tr class="header-primary">
+              <th class="item-width padding-left text-align-left">Service Item Name</th>
+              <th>Qty</th>
+            </tr>
+          </thead>
+          <tbody class="font-table">
+            {{#each dataAdditionalServiceItems}}
+            <tr class="border-bottom-primary">
+              <td class="padding-left">
+                <p class="normal thinner" style="padding-top: 8px;">{{name}}</p>
+                <p class="description">{{description}}</p>
+                <ul>
+                  {{#each Equipments}}
+                  <li style="margin-bottom: 10px;">{{brand}} {{model}} - {{serialNumber}} {{#if location}} ({{location}}) {{else}}{{/if}}</li>
+                  {{/each}}
+                </ul>
+              </td>
+              <td>
+                <p class="normal" style="text-align: center;">{{quantity}}</p>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        {{/if}}
+      </table>
+    </div>
+    {{else}}{{/if}}
+    <br />
+    <br />
+
+    {{#if additionalItem}}
+    <div class="page-break"></div>
+    {{else}}{{/if}} {{#if checklistJobLabel}}
+    <div class="container">
+      <table>
+        <table class="font-table">
+          <thead class="header-table">
+            <tr>
+              <th class="header-secondary" colspan="2">Job Checklist</th>
+            </tr>
+            <tr class="header-primary">
+              <th class="subtask-width padding-left text-align-left">Checklist Title & Descriptions</th>
+              <th class="quater-width padding-left text-align-left">Item Name</th>
+            </tr>
+          </thead>
+          <tbody class="font-table ">
+            {{#each checklistJob}}
+            <tr class="border-bottom-primary">
+              <td class="padding-left" style="vertical-align: top;">
+                <p class="normal" style="padding-top: 8px;">{{name}}</p>
+                <p class="description">{{description}}</p>
+              </td>
+              <td class="padding-left">
+                {{#each ChecklistJobItems}}
+                <p class="normal padding-left padding-top">
+                  <label class="container1"
+                    >{{name}} <input type="checkbox" {{#if status}} checked {{else}}{{/if}} />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="container1 break-line"
+                    >{{#if remarks }} Remarks : <br />
+                    {{ remarks }} {{ else }}{{/if}}</label
+                  >
+                </p>
+                {{/each}}
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </table>
+    </div>
+    <br />
+    <br />
+    {{else}}{{/if}}
+
+    {{#if jobNoteLabel}}
+    <div class="container">
+      <table>
+        <table class="font-table">
+          <thead class="header-table">
+            <tr>
+              <th class="header-secondary" colspan="2">Job Notes</th>
+            </tr>
+            <tr class="header-primary">
+              <th class="image-column-width padding-left text-align-left" style="width: 25%;">Image</th>
+              <th class="padding-left text-align-left" style="width: 75%;">Tagged Equipment & Notes</th>
+            </tr>
+          </thead>
+          <tbody class="font-table">
+            {{#each jobNotes}}
+            <table style="table-layout: fixed; width: 100%;">
+              <tr class="notes-row-table border-bottom-primary">
+                <td class="notes-padding" style="vertical-align: top; width: 25%;">
+                  {{#if imageUrls}} {{#each imageUrls}}
+                  <img src="{{imageUrl}}" class="image-width" />
+                  {{/each}}{{/if}}
+                </td>
+                <td class="padding-left padding-top" style="vertical-align: top; width: 75%;">
+                  <table>
+                    {{#if Equipment}}
+                    <tr>
+                      <td class="padding-left w-50">
+                        <ul style="padding-left: 15px; margin-top: 0px;">
+                          {{#each Equipment}}
+                          <li><p class="normal">{{brand}} {{model}} - {{serialNumber}} {{#if location}} ({{location}}) {{else}}{{/if}}</p></li>
+                          {{/each}}
+                        </ul>
+                      </td>
+                    </tr>
+                    {{/if}}
+                    <tr>
+                      <td class="padding-left w-50"><p class="normal break-line" style="line-height: 1.6;">{{notes}}</p></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            {{/each}}
+          </tbody>
+        </table>
+      </table>
+    </div>
+    {{else}}{{/if}}
+  </body>
+</html>
